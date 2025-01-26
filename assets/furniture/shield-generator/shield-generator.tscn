@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://2652g0yxsf11"]
+
+[ext_resource type="Script" path="res://assets/furniture/shield-generator/shield_generator.gd" id="1_hu1pg"]
+[ext_resource type="Texture2D" uid="uid://cy50mgfvaxewv" path="res://assets/tile-white.png" id="1_wskuv"]
+[ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_jectt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmh7t"]
+size = Vector2(96, 64)
+
+[node name="Shield-generator" type="Node2D"]
+script = ExtResource("1_hu1pg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 2)
+texture = ExtResource("1_wskuv")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -43.0
+offset_top = -28.0
+offset_right = 39.0
+offset_bottom = 23.0
+text = "Shield Gen"
+
+[node name="power_label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+offset_left = -46.0
+offset_right = 46.0
+offset_bottom = 23.0
+text = "Power: x/y"
+
+[node name="Button" parent="." instance=ExtResource("3_jectt")]
+position = Vector2(0, 36)
+button_id = "shield"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_qmh7t")

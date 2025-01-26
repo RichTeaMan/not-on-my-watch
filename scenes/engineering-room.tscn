@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://c2vq0a0joo1m6"]
+[gd_scene load_steps=6 format=4 uid="uid://c2vq0a0joo1m6"]
 
 [ext_resource type="TileSet" uid="uid://cuhjq1vosjrim" path="res://assets/grids/scifi-tilemap.tres" id="1_07b2t"]
 [ext_resource type="PackedScene" uid="uid://dpa0f23iv28qh" path="res://assets/characters/oran/oran.tscn" id="2_xyft2"]
-[ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_av2kk"]
 [ext_resource type="PackedScene" uid="uid://ctxsy6incefdm" path="res://assets/furniture/reactor/reactor.tscn" id="3_f62ad"]
+[ext_resource type="PackedScene" uid="uid://bskwjvmpgvw38" path="res://assets/furniture/weapons/weapons.tscn" id="5_8fw0f"]
+[ext_resource type="PackedScene" uid="uid://2652g0yxsf11" path="res://assets/furniture/shield-generator/shield-generator.tscn" id="5_kjb57"]
 
 [node name="engineering-room" type="Node2D"]
 y_sort_enabled = true
@@ -20,7 +21,7 @@ tile_set = ExtResource("1_07b2t")
 navigation_visibility_mode = 1
 
 [node name="oran" parent="." instance=ExtResource("2_xyft2")]
-position = Vector2(50, 80)
+position = Vector2(337, 308)
 SPEED = 80.0
 
 [node name="furniture" type="Node2D" parent="."]
@@ -28,7 +29,8 @@ SPEED = 80.0
 [node name="Reactor" parent="furniture" instance=ExtResource("3_f62ad")]
 position = Vector2(288, 128)
 
-[node name="Button" parent="furniture" instance=ExtResource("3_av2kk")]
-y_sort_enabled = true
-position = Vector2(241, 260)
-button_id = "reactor"
+[node name="Shield-generator" parent="furniture" instance=ExtResource("5_kjb57")]
+position = Vector2(432, 32)
+
+[node name="weapons" parent="furniture" instance=ExtResource("5_8fw0f")]
+position = Vector2(126, 48)
