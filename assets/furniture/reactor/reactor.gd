@@ -17,6 +17,8 @@ func _process(delta: float) -> void:
         return
     if frames >= POWER_DRAIN_FRAMES:
         powerLevel += -1
+        if powerLevel == MAX_POWER * 0.2:
+            UI.add_comm_message("HELP! Reactor is running low!")
         frames = 0
     else:
         frames += 1
