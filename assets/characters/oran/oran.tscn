@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://njka72qxg1b8" path="res://assets/characters/oran/guard_orange_spritesheet.png" id="3_7lsxa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wu86"]
-size = Vector2(20, 12)
+size = Vector2(20, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gty2b"]
 atlas = ExtResource("3_7lsxa")
@@ -194,7 +194,7 @@ z_as_relative = false
 script = ExtResource("2_b6o0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_5wu86")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

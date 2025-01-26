@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctxsy6incefdm"]
+
+[ext_resource type="Texture2D" uid="uid://b7set2rryj54t" path="res://assets/furniture/reactor/reactor.png" id="1_1lsgy"]
+[ext_resource type="Script" path="res://assets/furniture/reactor/reactor.gd" id="1_arkt3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7tf8"]
+size = Vector2(128, 256)
+
+[node name="Reactor" type="Node2D"]
+script = ExtResource("1_arkt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1lsgy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_c7tf8")
+
+[node name="power_label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+offset_left = -57.0
+offset_top = 94.0
+offset_right = 56.0
+offset_bottom = 117.0
+text = "Power: x/y"

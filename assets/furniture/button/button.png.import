@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7set2rryj54t"
-path="res://.godot/imported/reactor.png-dd5ed60042ea4212f8d9225e894b9f3c.ctex"
+uid="uid://dnfd0pbcly248"
+path="res://.godot/imported/button.png-7cc11d794e77af9e019c1da5dd134c4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/furniture/reactor.png"
-dest_files=["res://.godot/imported/reactor.png-dd5ed60042ea4212f8d9225e894b9f3c.ctex"]
+source_file="res://assets/furniture/button/button.png"
+dest_files=["res://.godot/imported/button.png-7cc11d794e77af9e019c1da5dd134c4d.ctex"]
 
 [params]
 
