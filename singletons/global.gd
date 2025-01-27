@@ -4,8 +4,10 @@ signal on_button_pressed(button_id)
 signal on_enemy_ship_attacked()
 signal on_enemy_ship_state_changed(enemyShipState)
 signal on_increment_power_consumption(power)
+signal on_attack_enemy()
 
 var character_body
+var game_finished = false
 
 func register_player_body(p_character_body: CharacterBody2D) -> void:
     self.character_body = p_character_body
@@ -24,3 +26,9 @@ func enemy_ship_state_changed(enemyShipState: EnemyShip.EnemyShipState) -> void:
 
 func increment_power_consumption(power: int) -> void:
     on_increment_power_consumption.emit(power)
+
+func game_over() -> void:
+    game_finished = true
+
+func attack_enemy() -> void:
+    on_attack_enemy.emit()

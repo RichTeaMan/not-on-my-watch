@@ -30,3 +30,21 @@ size_flags_vertical = 0
 
 [node name="Comms-message" parent="right/comms-messages" instance=ExtResource("1_wus78")]
 layout_mode = 2
+
+[node name="center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="game-over" type="Control" parent="center"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="center/game-over"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Game over!"

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6gul5rhvj7ko"]
+
+[ext_resource type="Script" path="res://assets/furniture/consumer-subsystem.gd" id="1_d47ud"]
+[ext_resource type="Texture2D" uid="uid://cy50mgfvaxewv" path="res://assets/tile-white.png" id="2_1pfk2"]
+[ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_l2wdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amh7t"]
+size = Vector2(128, 96)
+
+[node name="engine" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_d47ud")
+POWER_USAGE = 40
+SUBSYSTEM_ID = "engine"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(4, 3)
+texture = ExtResource("2_1pfk2")
+
+[node name="name_label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+y_sort_enabled = true
+offset_left = -61.0
+offset_top = -28.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Engines"
+
+[node name="label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+y_sort_enabled = true
+offset_left = -60.0
+offset_top = 20.0
+offset_right = 32.0
+offset_bottom = 43.0
+text = "Power: x/y"
+
+[node name="button" parent="." instance=ExtResource("3_l2wdm")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(48, 52)
+button_id = "weapons"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_amh7t")

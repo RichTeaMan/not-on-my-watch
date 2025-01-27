@@ -32,3 +32,11 @@ text = "Power: x/y"
 y_sort_enabled = true
 position = Vector2(-48, 132)
 button_id = "reactor"
+
+[node name="critical_label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+offset_left = -59.0
+offset_top = 62.0
+offset_right = 40.0
+offset_bottom = 85.0

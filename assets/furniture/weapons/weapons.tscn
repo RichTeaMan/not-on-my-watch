@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://bskwjvmpgvw38"]
 
 [ext_resource type="Texture2D" uid="uid://cy50mgfvaxewv" path="res://assets/tile-white.png" id="1_askuv"]
-[ext_resource type="Script" path="res://assets/furniture/consumer-subsystem.gd" id="1_o244b"]
+[ext_resource type="Script" path="res://assets/furniture/weapons/weapons.gd" id="1_xxhqd"]
 [ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_aectt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amh7t"]
 size = Vector2(128, 96)
 
 [node name="weapons" type="Node2D"]
-script = ExtResource("1_o244b")
+script = ExtResource("1_xxhqd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 3)
@@ -21,6 +21,7 @@ offset_top = -28.0
 offset_right = 88.0
 offset_bottom = 23.0
 text = "Weapons system"
+metadata/_edit_use_anchors_ = true
 
 [node name="label" type="Label" parent="."]
 unique_name_in_owner = true
@@ -30,8 +31,20 @@ offset_top = 20.0
 offset_right = 32.0
 offset_bottom = 43.0
 text = "Power: x/y"
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" parent="." instance=ExtResource("3_aectt")]
+[node name="charge_label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+offset_left = -60.0
+offset_top = 1.405
+offset_right = 34.0
+offset_bottom = 24.405
+text = "charge label"
+metadata/_edit_use_anchors_ = true
+
+[node name="button" parent="." instance=ExtResource("3_aectt")]
+unique_name_in_owner = true
 position = Vector2(48, 52)
 button_id = "weapons"
 

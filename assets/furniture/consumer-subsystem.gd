@@ -4,12 +4,13 @@ class_name ConsumerSubsystem extends Node2D
 @export var SUBSYSTEM_ID: String
 
 @onready var label: Label = %label
+@onready var button: FurnitureButton = %button
 
 var is_enabled = false
 
 func _ready() -> void:
     Global.on_button_pressed.connect(_on_button_pressed)
-
+    button.button_id = SUBSYSTEM_ID
 
 func _process(_delta: float) -> void:
     label.text = "On PU: %s" % POWER_USAGE if is_enabled else "Off"
