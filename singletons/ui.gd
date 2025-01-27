@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var commMessages: VBoxContainer = %"comms-messages"
 

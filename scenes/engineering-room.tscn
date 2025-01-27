@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c2vq0a0joo1m6"]
+[gd_scene load_steps=10 format=4 uid="uid://c2vq0a0joo1m6"]
 
 [ext_resource type="TileSet" uid="uid://cuhjq1vosjrim" path="res://assets/grids/scifi-tilemap.tres" id="1_07b2t"]
 [ext_resource type="Script" path="res://scenes/engineering_room.gd" id="1_w7vme"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bskwjvmpgvw38" path="res://assets/furniture/weapons/weapons.tscn" id="5_8fw0f"]
 [ext_resource type="PackedScene" uid="uid://2652g0yxsf11" path="res://assets/furniture/shield-generator/shield-generator.tscn" id="5_kjb57"]
 [ext_resource type="PackedScene" uid="uid://b6gul5rhvj7ko" path="res://assets/furniture/engine/engine.tscn" id="7_ehy75"]
+[ext_resource type="Script" path="res://scenes/camera.gd" id="8_uhxij"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gdxqb"]
 
 [node name="engineering-room" type="Node2D"]
 y_sort_enabled = true
@@ -56,3 +59,12 @@ unique_name_in_owner = true
 position = Vector2(126, 48)
 POWER_USAGE = 60
 SUBSYSTEM_ID = "weapons"
+
+[node name="camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(300, 300)
+ignore_rotation = false
+script = ExtResource("8_uhxij")
+max_offset = Vector2(200, 200)
+max_roll = 0.06
+noise = SubResource("FastNoiseLite_gdxqb")

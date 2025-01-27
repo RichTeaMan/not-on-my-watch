@@ -2,6 +2,8 @@ extends Node2D
 
 @export var enemy_ship_count: int = 1
 
+@onready var camera = %camera
+
 @onready var shield: ConsumerSubsystem = %shield
 @onready var engine: ConsumerSubsystem = %engine
 @onready var weapons: ConsumerSubsystem = %weapons
@@ -20,6 +22,9 @@ func _process(delta: float) -> void:
         return
     for enemy_ship in enemy_ships:
         enemy_ship.process(delta)
+        
+    if Input.is_action_just_pressed("ui_page_up"):
+        camera.shake(1.0)
 
 func _on_enemy_ship_state_changed(enemy_ship_state: EnemyShip.EnemyShipState) -> void:
     if enemy_ship_state == EnemyShip.EnemyShipState.PREPARING_ATTACK:
@@ -33,11 +38,14 @@ func _on_enemy_ship_state_changed(enemy_ship_state: EnemyShip.EnemyShipState) ->
             UI.add_comm_message("They hit our shield, ha!");
         else:
             UI.add_comm_message("We've been hit by lasers!")
+            camera.shake(0.5)
+            
     elif enemy_ship_state == EnemyShip.EnemyShipState.LAUNCHING_MISSILES:
         if engine.get_enabled_state():
             UI.add_comm_message("We dodged the missiles!");
         else:
             UI.add_comm_message("We've been hit by missiles!")
+            camera.shake(0.5)
 
 func _on_attack_enemy():
     UI.add_comm_message("We've hit them! That'll slow them down.")
