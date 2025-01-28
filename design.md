@@ -26,6 +26,16 @@ important aspect.
   * Seat adjustment
   * Food paste dispenser
 
+## Random events
+
+* Crew needs feeding
+* Subsystems need
+* Get weird with it?
+  * Space rats have appeared
+  * Controls are inverted
+  * Super fast mode
+  * Electric cloud, reactor will get closer to overloading
+
 ## Crew
 
 * Pilot
