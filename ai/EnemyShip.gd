@@ -13,6 +13,8 @@ var timeToStateChange: float = 0.0
 var state: EnemyShipState = EnemyShipState.IDLE
 
 func _init() -> void:
+    state = EnemyShipState.IDLE
+    timeToStateChange = 5.0
     Global.on_attack_enemy.connect(_on_attack_enemy)
 
 func process(delta: float):
