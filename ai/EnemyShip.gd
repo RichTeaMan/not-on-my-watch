@@ -25,19 +25,20 @@ func process(delta: float):
                 state = EnemyShipState.ATTACKING
             EnemyShipState.PREPARING_MISSILES:
                 state = EnemyShipState.LAUNCHING_MISSILES
-            _:
+            EnemyShipState.IDLE:
                 timeToStateChange = randi_range(5, 12)
                 state = randInitialState()
+            _: # always go to idle state for some player down time
+                timeToStateChange = randi_range(5, 12)
+                state = EnemyShipState.IDLE
         Global.enemy_ship_state_changed(state)
         Log.info("%s - %s seconds" % [EnemyShipState.keys()[state], timeToStateChange])
 
 func randInitialState() -> EnemyShipState:
     match randi() % 3:
         0:
-            return EnemyShipState.IDLE
-        1:
             return EnemyShipState.PREPARING_ATTACK
-        2:
+        1:
             return EnemyShipState.PREPARING_MISSILES
         _:
             return EnemyShipState.IDLE
