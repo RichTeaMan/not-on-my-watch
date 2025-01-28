@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
         critical_level += 1
         if critical_level >= MAX_CRITICAL_LEVEL:
             print("Game over: reactor critical")
-            Global.game_over()
+            Global.game_over("The reactor overheated")
     elif critical_level > 0:
         critical_level -= 1
     critical_label.text = "Criticality: %s/%s" % [critical_level, MAX_CRITICAL_LEVEL]

@@ -20,10 +20,38 @@ important aspect.
 * Missile loader
 * Radar
 * Communications
+* Engines (afterburners)
 * Random stuff?
   * Soda machine
   * Seat adjustment
   * Food paste dispenser
+
+## Crew
+
+* Pilot
+* Gunner
+* Security Officer
+
+## AI
+
+The enemy ships are offscreen, but still need to be (partially) simulated to be able to create a threat and generate
+events. Maybe there will be multiple enemies?
+
+## Enemy ship states
+
+* Idle
+* Preparing an attack
+* Attacking
+* Vulnerable
+
+## Gameplay
+
+Subsystems are consuming power from the reactor. The reactor needs to be topped up regularly. Subsystems combined draw
+more power than the reactor can maintain and need to be turned on manually. Messages from the crew tell the engineer
+what needs to be turned on.
+
+The ship is currently engaged in an unseen battle, correct systems allow the ship to last longer. Incorrect systems
+can damage the ship, eg missing shields result in laser damage.
 
 ## Possible Assets
 
