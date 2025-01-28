@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctnamq83mn07m"]
+[gd_scene load_steps=2 format=3 uid="uid://ctnamq83mn07m"]
 
 [ext_resource type="Script" path="res://singletons/ui.gd" id="1_fktxw"]
-[ext_resource type="PackedScene" uid="uid://dnfmcf2uvhvcs" path="res://ui/comms-message/comms-message.tscn" id="1_wus78"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_fktxw")
@@ -23,15 +22,14 @@ anchor_right = 1.0
 offset_left = -200.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
 
 [node name="comms-messages" type="VBoxContainer" parent="Ui/right"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-
-[node name="Comms-message" parent="Ui/right/comms-messages" instance=ExtResource("1_wus78")]
-layout_mode = 2
 
 [node name="center" type="CenterContainer" parent="Ui"]
 layout_mode = 1

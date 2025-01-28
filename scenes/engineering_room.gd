@@ -23,6 +23,8 @@ func _ready() -> void:
     Global.on_game_over.connect(_on_game_over)
     for i in range(0, enemy_ship_count):
         enemy_ships.append(EnemyShip.new())
+    
+    UI.add_comm_message("They're coming, get ready")
 
 func _process(delta: float) -> void:
     for enemy_ship in enemy_ships:
@@ -30,11 +32,15 @@ func _process(delta: float) -> void:
         
     if Input.is_action_just_pressed("ui_page_up"):
         camera.shake(1.0)
+    if Input.is_action_just_pressed("ui_page_down"):
+        UI.add_comm_message("a new message")
 
 func ship_damage():
     ship_health -= 1
     camera.shake(0.5)
     spawn_fire(20)
+    if ship_health == 1:
+        UI.add_comm_message("One more hit and we're done for!")
     if ship_health <= 0:
         Global.game_over("The ship was destroyed be enemy attacks")
 

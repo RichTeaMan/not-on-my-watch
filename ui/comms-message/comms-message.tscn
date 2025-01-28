@@ -29,5 +29,7 @@ theme_override_constants/margin_bottom = 6
 [node name="message-label" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "test message"
+autowrap_mode = 3
