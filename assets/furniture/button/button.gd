@@ -10,5 +10,5 @@ func _process(delta: float) -> void:
     if Input.is_action_just_pressed("action"):
         var character_body = Global.fetch_player_body()
         if area.overlaps_body(character_body):
-            print("Button '%s' pressed" % [ button_id ])
+            Log.info("Button '%s' pressed" % [ button_id ])
             Global.button_pressed(button_id)

@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
     if current_power_drain > MAX_POWER:
         critical_level += 1
         if critical_level >= MAX_CRITICAL_LEVEL:
-            print("Game over: reactor critical")
+            Log.info("Game over: reactor critical")
             Global.game_over("The reactor overheated")
     elif critical_level > 0:
         critical_level -= 1

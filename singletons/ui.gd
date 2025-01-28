@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
     pass
 
 func add_comm_message(message: String) -> void:
+    Log.info("Msg: %s" % message)
     var commsMessage = commMessageScene.instantiate()
     commMessages.add_child(commsMessage)
     commsMessage.message = message

@@ -29,7 +29,7 @@ func process(delta: float):
                 timeToStateChange = randi_range(5, 12)
                 state = randInitialState()
         Global.enemy_ship_state_changed(state)
-        print("%s - %s seconds" % [EnemyShipState.keys()[state], timeToStateChange])
+        Log.info("%s - %s seconds" % [EnemyShipState.keys()[state], timeToStateChange])
 
 func randInitialState() -> EnemyShipState:
     match randi() % 3:
