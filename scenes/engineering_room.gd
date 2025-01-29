@@ -24,9 +24,13 @@ enum Aliments {
 
 var aliment_timer = 10.0
 
+var second_timer = 1.0
+
 var enemy_ships: Array[EnemyShip] = []
 
 var ship_aliments: Array[Aliments] = []
+
+var weapon_offline_seconds = 0
 
 func _ready() -> void:
     Global.on_enemy_ship_state_changed.connect(_on_enemy_ship_state_changed)
@@ -37,10 +41,25 @@ func _ready() -> void:
         enemy_ships.append(EnemyShip.new())
     
     UI.add_comm_message("They're coming, get ready")
+    
+    # dumb way to delay a message
+    var tween = get_tree().create_tween()
+    tween.tween_interval(3.0)
+    tween.tween_callback(UI.add_comm_message.bind("Don't forget to start charging the weapons!"))
 
 func _process(delta: float) -> void:
     for enemy_ship in enemy_ships:
         enemy_ship.process(delta)
+    
+    second_timer -= delta
+    if second_timer <= 0.0:
+        second_timer += 1.0
+        if weapons.get_enabled_state():
+            weapon_offline_seconds = 0
+        else:
+            weapon_offline_seconds += 1
+        if weapon_offline_seconds % 10 == 0:
+            UI.add_comm_message("We're not charging our weapons!")
     
     aliment_timer -= delta
     if aliment_timer <= 0.0:
