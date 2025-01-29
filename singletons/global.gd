@@ -4,6 +4,7 @@ signal on_button_pressed(button_id)
 signal on_enemy_ship_attacked()
 signal on_enemy_ship_state_changed(enemyShipState)
 signal on_increment_power_consumption(power)
+signal on_weapon_ready()
 signal on_attack_enemy()
 signal on_game_over(reason)
 signal on_soda_ready()
@@ -30,6 +31,9 @@ func increment_power_consumption(power: int) -> void:
 
 func game_over(reason: String) -> void:
     on_game_over.emit(reason)
+
+func weapon_ready() -> void:
+    on_weapon_ready.emit()
 
 func attack_enemy() -> void:
     on_attack_enemy.emit()

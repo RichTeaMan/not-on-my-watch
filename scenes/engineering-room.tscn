@@ -40,6 +40,7 @@ y_sort_enabled = true
 z_index = 1
 y_sort_enabled = true
 position = Vector2(288, 128)
+MAX_CRITICAL_LEVEL = 20
 
 [node name="shield" parent="furniture" instance=ExtResource("5_kjb57")]
 unique_name_in_owner = true

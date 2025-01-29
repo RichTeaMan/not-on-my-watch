@@ -34,7 +34,7 @@ var weapon_offline_seconds = 0
 
 func _ready() -> void:
     Global.on_enemy_ship_state_changed.connect(_on_enemy_ship_state_changed)
-    Global.on_attack_enemy.connect(_on_attack_enemy)
+    Global.on_weapon_ready.connect(_on_weapon_ready)
     Global.on_game_over.connect(_on_game_over)
     Global.on_soda_ready.connect(_on_soda_ready)
     for i in range(0, enemy_ship_count):
@@ -58,8 +58,8 @@ func _process(delta: float) -> void:
             weapon_offline_seconds = 0
         else:
             weapon_offline_seconds += 1
-        if weapon_offline_seconds % 10 == 0:
-            UI.add_comm_message("We're not charging our weapons!")
+            if weapon_offline_seconds % 10 == 0:
+                UI.add_comm_message("We're not charging our weapons!")
     
     aliment_timer -= delta
     if aliment_timer <= 0.0:
@@ -116,8 +116,21 @@ func _on_enemy_ship_state_changed(enemy_ship_state: EnemyShip.EnemyShipState) ->
             UI.add_comm_message("We've been hit by missiles!")
             ship_damage()
 
-func _on_attack_enemy():
-    UI.add_comm_message("We've hit them! That'll slow them down.")
+func _on_weapon_ready():
+    # check debuffs
+    var missed = false
+    for aliment in ship_aliments:
+        if randi() % 2 == 0:
+            missed = true
+            match aliment:
+                Aliments.THIRSTY:
+                    UI.add_comm_message("I missed! I'm just so dang thirsty...")
+                _:
+                    UI.add_comm_message("Whoops, I missed.")
+        break
+    if !missed:
+        Global.attack_enemy()
+        UI.add_comm_message("We've hit them! That'll slow them down.")
 
 func _on_game_over(_reason: String) -> void:
     process_mode = ProcessMode.PROCESS_MODE_DISABLED

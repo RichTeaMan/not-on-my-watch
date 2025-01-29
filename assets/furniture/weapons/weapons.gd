@@ -17,6 +17,6 @@ func _process(delta: float) -> void:
     if super.get_enabled_state():
         charge_level += 1
         if charge_level >= MAX_CHARGE_LEVEL:
-            Global.attack_enemy()
+            Global.weapon_ready()
             charge_level = 0
         charge_label.text = "Charge: %s/%s" % [charge_level, MAX_CHARGE_LEVEL]
