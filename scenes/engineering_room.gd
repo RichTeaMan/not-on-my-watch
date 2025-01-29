@@ -75,7 +75,7 @@ func _process(delta: float) -> void:
 
 func ship_damage():
     ship_health -= 1
-    camera.shake(0.5)
+    camera.shake(0.7)
     spawn_fire(20)
     if ship_health == 1:
         UI.add_comm_message("One more hit and we're done for!")

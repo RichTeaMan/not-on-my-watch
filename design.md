@@ -23,7 +23,9 @@ important aspect.
 * Engines (afterburners)
 * Random stuff?
   * Soda machine
+  * Coffee
   * Seat adjustment
+  * Air con
   * Food paste dispenser
 
 ## Random events
