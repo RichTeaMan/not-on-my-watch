@@ -1,4 +1,4 @@
-extends Node2D
+class_name Reactor extends Node2D
 
 @export var MAX_POWER = 100
 @export var TICK_TIME = 1
@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
     elif critical_level > 0:
         critical_level -= 1
     critical_label.text = "Criticality: %s/%s" % [critical_level, MAX_CRITICAL_LEVEL]
+
+func is_in_danger() -> bool:
+    return (MAX_CRITICAL_LEVEL * 0.75) <= critical_level
 
 func _on_button_pressed(button_id: String):
     if button_id != "reactor":

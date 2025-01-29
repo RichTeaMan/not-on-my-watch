@@ -14,6 +14,7 @@ enum Aliments {
 
 @onready var camera = %camera
 
+@onready var reactor: Reactor = %reactor
 @onready var shield: ConsumerSubsystem = %shield
 @onready var engine: ConsumerSubsystem = %engine
 @onready var weapons: ConsumerSubsystem = %weapons
@@ -31,6 +32,8 @@ var enemy_ships: Array[EnemyShip] = []
 var ship_aliments: Array[Aliments] = []
 
 var weapon_offline_seconds = 0
+
+var red_siren_active = false
 
 func _ready() -> void:
     Global.on_enemy_ship_state_changed.connect(_on_enemy_ship_state_changed)
@@ -50,6 +53,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     for enemy_ship in enemy_ships:
         enemy_ship.process(delta)
+    
+    if reactor.is_in_danger():
+        start_red_siren()
+    else:
+        stop_red_siren()
     
     second_timer -= delta
     if second_timer <= 0.0:
@@ -72,6 +80,9 @@ func _process(delta: float) -> void:
         camera.shake(1.0)
     if Input.is_action_just_pressed("ui_page_down"):
         UI.add_comm_message("a new message")
+    if Input.is_action_just_pressed("ui_end"):
+        red_siren_active = !red_siren_active
+        red_siren()
 
 func ship_damage():
     ship_health -= 1
@@ -139,3 +150,33 @@ func _on_soda_ready() -> void:
     if ship_aliments.has(Aliments.THIRSTY):
         ship_aliments.remove_at(ship_aliments.find(Aliments.THIRSTY))
     UI.add_comm_message("Ahh, delicious soda.")
+
+func start_red_siren():
+    if red_siren_active:
+        return
+    red_siren_active = true
+    red_siren()
+
+func stop_red_siren():
+    red_siren_active = false
+
+func red_siren():
+    if !red_siren_active:
+        return
+    
+    var transition_time = 0.6
+    var pause_time = 0.2
+    
+    var canvas_modulate: CanvasModulate = %canvas_modulate
+    var tween = get_tree().create_tween()
+    tween.parallel().tween_property(canvas_modulate, "color:g", 0, transition_time)
+    tween.parallel().tween_property(canvas_modulate, "color:b", 0, transition_time)
+    
+    tween.chain().tween_interval(pause_time)
+    
+    tween.parallel().tween_property(canvas_modulate, "color:g", 1, transition_time)
+    tween.parallel().tween_property(canvas_modulate, "color:b", 1, transition_time)
+    
+    tween.chain().tween_interval(pause_time)
+    tween.tween_callback(red_siren)
+    

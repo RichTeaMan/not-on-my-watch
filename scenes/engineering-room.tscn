@@ -36,7 +36,8 @@ SPEED = 400.0
 [node name="furniture" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Reactor" parent="furniture" instance=ExtResource("3_f62ad")]
+[node name="reactor" parent="furniture" instance=ExtResource("3_f62ad")]
+unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
 position = Vector2(288, 128)
@@ -73,3 +74,6 @@ unique_name_in_owner = true
 
 [node name="soda" parent="." instance=ExtResource("9_083vw")]
 position = Vector2(555, 184)
+
+[node name="canvas_modulate" type="CanvasModulate" parent="."]
+unique_name_in_owner = true
