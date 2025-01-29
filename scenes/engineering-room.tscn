@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c2vq0a0joo1m6"]
+[gd_scene load_steps=11 format=4 uid="uid://c2vq0a0joo1m6"]
 
 [ext_resource type="TileSet" uid="uid://cuhjq1vosjrim" path="res://assets/grids/scifi-tilemap.tres" id="1_07b2t"]
 [ext_resource type="Script" path="res://scenes/engineering_room.gd" id="1_w7vme"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://2652g0yxsf11" path="res://assets/furniture/shield-generator/shield-generator.tscn" id="5_kjb57"]
 [ext_resource type="PackedScene" uid="uid://b6gul5rhvj7ko" path="res://assets/furniture/engine/engine.tscn" id="7_ehy75"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="8_uhxij"]
+[ext_resource type="PackedScene" uid="uid://ctuxcywfhrxgg" path="res://assets/furniture/soda/soda.tscn" id="9_083vw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gdxqb"]
 
@@ -72,3 +73,6 @@ noise = SubResource("FastNoiseLite_gdxqb")
 
 [node name="effects" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="soda" parent="." instance=ExtResource("9_083vw")]
+position = Vector2(555, 184)

@@ -6,6 +6,7 @@ signal on_enemy_ship_state_changed(enemyShipState)
 signal on_increment_power_consumption(power)
 signal on_attack_enemy()
 signal on_game_over(reason)
+signal on_soda_ready()
 
 var character_body
 
@@ -32,3 +33,6 @@ func game_over(reason: String) -> void:
 
 func attack_enemy() -> void:
     on_attack_enemy.emit()
+
+func soda_ready() -> void:
+    on_soda_ready.emit()

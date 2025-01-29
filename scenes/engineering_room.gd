@@ -1,5 +1,13 @@
 extends Node2D
 
+enum Aliments {
+    COLD,
+    HOT,
+    THIRSTY,
+    HUNGRY,
+    UNCOMFORTABLE
+}
+
 @export var ship_health: int = 3
 
 @export var enemy_ship_count: int = 1
@@ -14,13 +22,17 @@ extends Node2D
 @onready var fire_2_scene = load("res://assets/effects/fire_2.tscn")
 @onready var fire_3_scene = load("res://assets/effects/fire_3.tscn")
 
+var aliment_timer = 10.0
+
 var enemy_ships: Array[EnemyShip] = []
 
+var ship_aliments: Array[Aliments] = []
 
 func _ready() -> void:
     Global.on_enemy_ship_state_changed.connect(_on_enemy_ship_state_changed)
     Global.on_attack_enemy.connect(_on_attack_enemy)
     Global.on_game_over.connect(_on_game_over)
+    Global.on_soda_ready.connect(_on_soda_ready)
     for i in range(0, enemy_ship_count):
         enemy_ships.append(EnemyShip.new())
     
@@ -29,7 +41,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     for enemy_ship in enemy_ships:
         enemy_ship.process(delta)
-        
+    
+    aliment_timer -= delta
+    if aliment_timer <= 0.0:
+        aliment_timer = randf_range(5.0, 15.0)
+        if !ship_aliments.has(Aliments.THIRSTY):
+            ship_aliments.append(Aliments.THIRSTY)
+            UI.add_comm_message("Goodness, I'm thirsty. Maybe switch the soda machine on?")
+    
     if Input.is_action_just_pressed("ui_page_up"):
         camera.shake(1.0)
     if Input.is_action_just_pressed("ui_page_down"):
@@ -83,3 +102,8 @@ func _on_attack_enemy():
 
 func _on_game_over(_reason: String) -> void:
     process_mode = ProcessMode.PROCESS_MODE_DISABLED
+
+func _on_soda_ready() -> void:
+    if ship_aliments.has(Aliments.THIRSTY):
+        ship_aliments.remove_at(ship_aliments.find(Aliments.THIRSTY))
+    UI.add_comm_message("Ahh, delicious soda.")
