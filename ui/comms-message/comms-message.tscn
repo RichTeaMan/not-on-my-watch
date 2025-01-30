@@ -4,16 +4,17 @@
 [ext_resource type="FontFile" uid="uid://lhnm3prxqp6c" path="res://assets/fonts/VT323-Regular.ttf" id="2_jbryb"]
 
 [node name="Comms-message" type="MarginContainer"]
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(300, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1720.0
-offset_bottom = -1040.0
+offset_right = -1620.0
+offset_bottom = -1075.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/margin_bottom = 5
 script = ExtResource("1_po3wd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -21,14 +22,15 @@ modulate = Color(0.878059, 0.847138, 0.809627, 1)
 show_behind_parent = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="message_margin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="message-label" type="Label" parent="MarginContainer"]
+[node name="message-label" type="Label" parent="message_margin"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(150, 0)
