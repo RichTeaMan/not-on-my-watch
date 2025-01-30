@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnfmcf2uvhvcs"]
+[gd_scene load_steps=3 format=3 uid="uid://dnfmcf2uvhvcs"]
 
 [ext_resource type="Script" path="res://ui/comms-message/comms_message.gd" id="1_po3wd"]
+[ext_resource type="FontFile" uid="uid://lhnm3prxqp6c" path="res://assets/fonts/VT323-Regular.ttf" id="2_jbryb"]
 
 [node name="Comms-message" type="MarginContainer"]
 custom_minimum_size = Vector2(200, 40)
@@ -31,5 +32,7 @@ unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jbryb")
+theme_override_font_sizes/font_size = 28
 text = "test message"
 autowrap_mode = 3
