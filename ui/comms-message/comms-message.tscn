@@ -17,6 +17,7 @@ size_flags_vertical = 4
 script = ExtResource("1_po3wd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.878059, 0.847138, 0.809627, 1)
 show_behind_parent = true
 layout_mode = 2
 
