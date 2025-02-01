@@ -12,11 +12,15 @@ var remaining_grow_time = 0.0
 var padding = 6
 var expiry_time = 100_000_000 # a very large number
 
+var moving_off_screen = false
+
 func _process(delta: float):
+    if moving_off_screen:
+        return
     if remaining_grow_time == 0.0:
         expiry_time -= delta
-        if expiry_time < 0:
-            queue_free()
+        if expiry_time <= 0.0:
+            move_off_screen()
         return
     remaining_grow_time -= delta
     if label["theme_override_constants/margin_bottom"] < padding:
@@ -36,6 +40,12 @@ func _set_message(_message: String):
 
 func _get_message() -> String:
     return label.text
+
+func move_off_screen():
+    moving_off_screen = true
+    var tween = get_tree().create_tween()
+    tween.tween_property(self, "position:x", size.x * 2, 5.0).set_trans(Tween.TRANS_LINEAR)
+    tween.tween_callback(queue_free)
 
 func grow():
     var font: Font = label["theme_override_fonts/font"]
