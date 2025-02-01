@@ -5,6 +5,7 @@ class_name CommsMessage extends MarginContainer
 @onready var label: Label = %"message-label"
 @onready var margin: MarginContainer = %message_margin
 
+var is_growing = false
 var grow_time = 0.5
 var grow_size = 40
 var grow_interval = 0
@@ -17,7 +18,7 @@ var moving_off_screen = false
 func _process(delta: float):
     if moving_off_screen:
         return
-    if remaining_grow_time == 0.0:
+    if !is_growing:
         expiry_time -= delta
         if expiry_time <= 0.0:
             move_off_screen()
@@ -28,6 +29,7 @@ func _process(delta: float):
     else:
         label["theme_override_constants/margin_bottom"] = padding
     if remaining_grow_time < 0.0:
+        is_growing = false
         remaining_grow_time = 0.0
         custom_minimum_size.y = grow_size
         
@@ -58,6 +60,7 @@ func grow():
     custom_minimum_size.y = 0.0
     size.y = 0
     remaining_grow_time = grow_time
+    is_growing = true
 
 func set_expiry_time(p_expiry_time: int):
     expiry_time = p_expiry_time
