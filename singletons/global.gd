@@ -10,6 +10,7 @@ signal on_weapon_ready()
 signal on_attack_enemy()
 signal on_game_over(reason)
 signal on_soda_ready()
+signal on_fade_play_screen(alpha)
 
 var character_body
 
@@ -47,9 +48,13 @@ func attack_enemy() -> void:
 func soda_ready() -> void:
     on_soda_ready.emit()
 
+## Fades the play screen. 0.0 is no fade, 1.0 is fully black.
+func fade_play_screen(alpha: float) -> void:
+    on_fade_play_screen.emit(alpha)
+
 func _on_resize():
     var window_size = DisplayServer.window_get_size()
     #get_viewport().get_visible_rect().size
     var new_scale := float(window_size.x) / INTERNAL_RESOLUTION_WIDTH
     get_window().content_scale_factor = new_scale
-    print("Window [%s] resized with scale %s" % [window_size, new_scale])
+    Log.info("Window [%s] resized with scale %s" % [window_size, new_scale])

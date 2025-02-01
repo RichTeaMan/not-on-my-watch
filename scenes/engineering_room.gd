@@ -40,6 +40,7 @@ func _ready() -> void:
     Global.on_weapon_ready.connect(_on_weapon_ready)
     Global.on_game_over.connect(_on_game_over)
     Global.on_soda_ready.connect(_on_soda_ready)
+    Global.on_fade_play_screen.connect(_on_fade_play_screen)
     for i in range(0, enemy_ship_count):
         enemy_ships.append(EnemyShip.new())
     
@@ -117,10 +118,10 @@ func spawn_fire(fires_to_spawn: int):
     var effects_node = %effects
     for i in range(0, fires_to_spawn):
         var tile: Vector2i = floor_tiles.pop_front()
-        var position = tile_map.map_to_local(tile)
+        var fire_position = tile_map.map_to_local(tile)
         var fire: Node2D = fire_scenes.pick_random().instantiate()
         effects_node.add_child(fire)
-        fire.position = position
+        fire.position = fire_position
 
 func _on_enemy_ship_state_changed(enemy_ship_state: EnemyShip.EnemyShipState) -> void:
     if enemy_ship_state == EnemyShip.EnemyShipState.PREPARING_ATTACK:
@@ -166,6 +167,12 @@ func _on_soda_ready() -> void:
     if ship_aliments.has(Aliments.THIRSTY):
         ship_aliments.remove_at(ship_aliments.find(Aliments.THIRSTY))
     UI.add_comm_message("Ahh, delicious soda.")
+
+## Fades the screen. 0.0 is no fade, 1.0 is fully black.
+func _on_fade_play_screen(alpha: float) -> void:
+    modulate.r = alpha
+    modulate.g = alpha
+    modulate.b = alpha
 
 func start_red_siren():
     if red_siren_active:

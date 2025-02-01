@@ -39,5 +39,7 @@ func _add_comm_message(message: String) -> void:
     commsMessage.grow()
 
 func _on_game_over(reason: String) -> void:
+    Global.fade_play_screen(0.6)
     %game_over.visible = true
     %game_over_reason.text = reason
+    
