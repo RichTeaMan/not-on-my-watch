@@ -64,7 +64,7 @@ SUBSYSTEM_ID = "weapons"
 
 [node name="camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(300, 300)
+position = Vector2(540, 280)
 ignore_rotation = false
 script = ExtResource("8_uhxij")
 max_roll = 0.06

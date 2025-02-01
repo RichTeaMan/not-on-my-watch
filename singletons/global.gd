@@ -1,5 +1,7 @@
 extends Node2D
 
+const INTERNAL_RESOLUTION_WIDTH = 34.0 * 32.0
+
 signal on_button_pressed(button_id)
 signal on_enemy_ship_attacked()
 signal on_enemy_ship_state_changed(enemyShipState)
@@ -10,6 +12,10 @@ signal on_game_over(reason)
 signal on_soda_ready()
 
 var character_body
+
+func _ready() -> void:
+    get_tree().get_root().size_changed.connect(_on_resize)
+    _on_resize()
 
 func register_player_body(p_character_body: CharacterBody2D) -> void:
     self.character_body = p_character_body
@@ -40,3 +46,10 @@ func attack_enemy() -> void:
 
 func soda_ready() -> void:
     on_soda_ready.emit()
+
+func _on_resize():
+    var window_size = DisplayServer.window_get_size()
+    #get_viewport().get_visible_rect().size
+    var new_scale := float(window_size.x) / INTERNAL_RESOLUTION_WIDTH
+    get_window().content_scale_factor = new_scale
+    print("Window [%s] resized with scale %s" % [window_size, new_scale])

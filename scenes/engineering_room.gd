@@ -12,7 +12,7 @@ enum Aliments {
 
 @export var enemy_ship_count: int = 1
 
-@onready var camera = %camera
+@onready var camera: Camera2D = %camera
 
 @onready var reactor: Reactor = %reactor
 @onready var shield: ConsumerSubsystem = %shield
@@ -83,6 +83,22 @@ func _process(delta: float) -> void:
     if Input.is_action_just_pressed("ui_end"):
         red_siren_active = !red_siren_active
         red_siren()
+    
+    var report_camera_position = false
+    if Input.is_action_pressed("camera_up"):
+        report_camera_position = true
+        camera.position.y -= 10
+    if Input.is_action_pressed("camera_down"):
+        report_camera_position = true
+        camera.position.y += 10
+    if Input.is_action_pressed("camera_left"):
+        report_camera_position = true
+        camera.position.x -= 10
+    if Input.is_action_pressed("camera_right"):
+        report_camera_position = true
+        camera.position.x += 10
+    if report_camera_position:
+        Log.info("Camera position: [%s, %s]" % [ camera.position.x, camera.position.y ])
 
 func ship_damage():
     ship_health -= 1
