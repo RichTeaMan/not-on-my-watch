@@ -40,6 +40,10 @@ var weapon_offline_seconds = 0
 
 var red_siren_active = false
 
+var first_frame_completed = false
+
+var game_started = false
+
 func _ready() -> void:
     Global.on_enemy_ship_state_changed.connect(_on_enemy_ship_state_changed)
     Global.on_weapon_ready.connect(_on_weapon_ready)
@@ -47,17 +51,23 @@ func _ready() -> void:
     Global.on_soda_ready.connect(_on_soda_ready)
     Global.on_fade_play_screen.connect(_on_fade_play_screen)
     Global.on_low_enemy_health.connect(_on_low_enemy_health)
+    Global.on_start_game.connect(_on_start_game)
+    _on_fade_play_screen(0.3)
     for i in range(0, enemy_ship_count):
         enemy_ships.append(EnemyShip.new())
-    
-    UI.add_comm_message("They're coming, get ready")
-    
-    # dumb way to delay a message
-    var tween = get_tree().create_tween()
-    tween.tween_interval(3.0)
-    tween.tween_callback(UI.add_comm_message.bind("Don't forget to start charging the weapons!"))
 
 func _process(delta: float) -> void:
+    if !game_started:
+        return
+    if !first_frame_completed:
+        UI.add_comm_message("They're coming, get ready")
+        
+        # dumb way to delay a message
+        var tween = get_tree().create_tween()
+        tween.tween_interval(3.0)
+        tween.tween_callback(UI.add_comm_message.bind("Don't forget to start charging the weapons!"))
+        first_frame_completed = true
+    
     for enemy_ship in enemy_ships:
         enemy_ship.process(delta)
     
@@ -181,8 +191,9 @@ func _on_soda_ready() -> void:
         ship_aliments.remove_at(ship_aliments.find(Aliments.THIRSTY))
     UI.add_comm_message("Ahh, delicious soda.")
 
-## Fades the screen. 0.0 is no fade, 1.0 is fully black.
+## Fades the screen. 1.0 is no fade, 0.0 is fully black.
 func _on_fade_play_screen(alpha: float) -> void:
+    Log.info("FADE %s" % alpha)
     modulate.r = alpha
     modulate.g = alpha
     modulate.b = alpha
@@ -216,3 +227,7 @@ func red_siren():
     tween.chain().tween_interval(pause_time)
     tween.tween_callback(red_siren)
     
+func _on_start_game():
+    pass
+    _on_fade_play_screen(1.0)
+    game_started = true

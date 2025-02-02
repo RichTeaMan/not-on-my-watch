@@ -16,6 +16,7 @@ var message_queue: Array[String] = []
 func _ready() -> void:
     %game_over.visible = false
     %player_win.visible = false
+    %introduction.visible = true
     Global.on_game_over.connect(_on_game_over)
     Global.on_restart_game.connect(_on_restart_game)
     
@@ -69,9 +70,14 @@ func _on_restart_game() -> void:
 func _on_restart_button_pressed() -> void:
     Global.restart_game()
 
-
 func _on_bgm_slider_value_changed(value: float) -> void:
     AudioServer.set_bus_volume_db(bgm_bus, linear_to_db(value))
 
 func _on_sfx_slider_value_changed(value: float) -> void:
     AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
+
+func _on_start_button_pressed() -> void:
+    Global.start_game()
+    %game_over.visible = false
+    %player_win.visible = false
+    %introduction.visible = false

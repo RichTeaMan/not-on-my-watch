@@ -140,6 +140,55 @@ max_value = 1.0
 step = 0.025
 value = 1.0
 
+[node name="introduction" type="MarginContainer" parent="Ui"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Ui/introduction"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui/introduction/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Ui/introduction/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 28
+text = "Our spaceship is under attack!
+
+We can get through this, but our reactor is damaged
+and we don't have enough power.
+
+I need you to get into the engineering bay and turn
+on subsystems, but only when we need them.
+
+If you're not careful, the reactor will go critical
+and kill us both!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="start_button" type="Button" parent="Ui/introduction/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 30
+text = "Not on my watch"
+
+[node name="Label2" type="Label" parent="Ui/introduction/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 20
+text = "[Move with WASD, press on subsystems with E to activate them]"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8ttmc")
 autoplay = true
@@ -149,3 +198,4 @@ bus = &"bgm"
 [connection signal="pressed" from="Ui/center/player_win/restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="value_changed" from="Ui/bottom-right/HBoxContainer/bgm_slider" to="." method="_on_bgm_slider_value_changed"]
 [connection signal="value_changed" from="Ui/bottom-right/HBoxContainer/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Ui/introduction/CenterContainer/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]

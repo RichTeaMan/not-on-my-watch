@@ -7,11 +7,12 @@ func _ready() -> void:
     Global.on_restart_game.connect(_on_restart_game)
     start_game()
 
-func start_game() -> void:
+func start_game():
     var scene = scene_def.instantiate()
     add_child(scene)
+    return scene
 
 func _on_restart_game() -> void:
     for c in get_children():
         c.queue_free()
-    start_game()
+    start_game()._on_start_game()

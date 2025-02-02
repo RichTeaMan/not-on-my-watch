@@ -11,14 +11,15 @@ signal on_attack_enemy()
 signal on_game_over(reason)
 signal on_soda_ready()
 signal on_fade_play_screen(alpha)
+signal on_start_game()
 signal on_restart_game()
 signal on_low_enemy_health()
 
 var character_body
 
-var start_game_time: float = Time.get_unix_time_from_system()
+var start_game_time: float = 0
 var end_game_time: float = 0
-var game_completed = false
+var game_completed = true
 
 func _ready() -> void:
     get_tree().get_root().size_changed.connect(_on_resize)
@@ -65,6 +66,11 @@ func soda_ready() -> void:
 ## Fades the play screen. 0.0 is no fade, 1.0 is fully black.
 func fade_play_screen(alpha: float) -> void:
     on_fade_play_screen.emit(alpha)
+
+func start_game() -> void:
+    game_completed = false
+    start_game_time = Time.get_unix_time_from_system()
+    on_start_game.emit()
 
 func restart_game() -> void:
     game_completed = false
