@@ -4,6 +4,9 @@ extends CanvasLayer
 
 @onready var commMessageScene = preload("res://ui/comms-message/comms-message.tscn")
 
+@onready var sfx_bus = AudioServer.get_bus_index("sfx")
+@onready var bgm_bus = AudioServer.get_bus_index("bgm")
+
 var off_screen_x = 200
 var off_screen_tween_interval = 0.6
 var comm_message_expire_time_seconds = 5.0
@@ -15,6 +18,9 @@ func _ready() -> void:
     %player_win.visible = false
     Global.on_game_over.connect(_on_game_over)
     Global.on_restart_game.connect(_on_restart_game)
+    
+    %sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
+    %bgm_slider.value = db_to_linear(AudioServer.get_bus_volume_db(bgm_bus))
 
 func _process(_delta: float):
     if message_queue.size() > 0 && comm_messages_ready():
@@ -62,3 +68,10 @@ func _on_restart_game() -> void:
 
 func _on_restart_button_pressed() -> void:
     Global.restart_game()
+
+
+func _on_bgm_slider_value_changed(value: float) -> void:
+    AudioServer.set_bus_volume_db(bgm_bus, linear_to_db(value))
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+    AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))

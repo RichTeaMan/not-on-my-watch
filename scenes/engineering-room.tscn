@@ -101,15 +101,19 @@ unique_name_in_owner = true
 [node name="sound_missile_hit" type="AudioStreamPlayer" parent="sfx"]
 unique_name_in_owner = true
 stream = ExtResource("11_qmkha")
+bus = &"sfx"
 
 [node name="sound_shield_hit" type="AudioStreamPlayer" parent="sfx"]
 unique_name_in_owner = true
 stream = ExtResource("12_6oi7b")
+bus = &"sfx"
 
 [node name="sound_missile_miss" type="AudioStreamPlayer" parent="sfx"]
 unique_name_in_owner = true
 stream = ExtResource("13_r4nj7")
+bus = &"sfx"
 
 [node name="sound_laser" type="AudioStreamPlayer" parent="sfx"]
 unique_name_in_owner = true
 stream = ExtResource("14_nmt83")
+bus = &"sfx"
