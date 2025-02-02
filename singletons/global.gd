@@ -1,6 +1,6 @@
 extends Node2D
 
-const INTERNAL_RESOLUTION_WIDTH = 34.0 * 32.0
+const INTERNAL_RESOLUTION_WIDTH = 36.0 * 32.0
 
 signal on_button_pressed(button_id)
 signal on_enemy_ship_attacked()

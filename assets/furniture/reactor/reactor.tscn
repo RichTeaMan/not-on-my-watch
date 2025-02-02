@@ -1,25 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctxsy6incefdm"]
+[gd_scene load_steps=6 format=3 uid="uid://ctxsy6incefdm"]
 
 [ext_resource type="Texture2D" uid="uid://b7set2rryj54t" path="res://assets/furniture/reactor/reactor.png" id="1_1lsgy"]
 [ext_resource type="Script" path="res://assets/furniture/reactor/reactor.gd" id="1_arkt3"]
 [ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_kagtv"]
+[ext_resource type="PackedScene" uid="uid://cqjvlifp8vo83" path="res://assets/effects/speech_bubble.tscn" id="4_kleo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7tf8"]
-size = Vector2(128, 256)
+size = Vector2(96, 256)
 
 [node name="Reactor" type="Node2D"]
 script = ExtResource("1_arkt3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_1lsgy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_c7tf8")
 
 [node name="power_label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = -57.0
@@ -29,14 +33,24 @@ offset_bottom = 117.0
 text = "Power: x/y"
 
 [node name="Button" parent="." instance=ExtResource("3_kagtv")]
+process_mode = 4
+visible = false
 y_sort_enabled = true
 position = Vector2(-48, 132)
 button_id = "reactor"
+display_sprite = true
+collision_area = Vector2(20, 10)
 
 [node name="critical_label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -59.0
 offset_top = 62.0
 offset_right = 40.0
 offset_bottom = 85.0
+
+[node name="speech_bubble" parent="." instance=ExtResource("4_kleo6")]
+unique_name_in_owner = true
+visible = false
+message = ""

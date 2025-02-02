@@ -6,11 +6,17 @@ class_name ConsumerSubsystem extends Node2D
 @onready var label: Label = %label
 @onready var button: FurnitureButton = %button
 
+@onready var speech_bubble: SpeechBubble = %speech_bubble
+
 var is_enabled = false
 
 func _ready() -> void:
+    if Engine.is_editor_hint():
+        return
     Global.on_button_pressed.connect(_on_button_pressed)
     button.button_id = SUBSYSTEM_ID
+    if speech_bubble != null:
+        speech_bubble.z_index = 2
 
 func _process(_delta: float) -> void:
     label.text = "On PU: %s" % POWER_USAGE if is_enabled else "Off"

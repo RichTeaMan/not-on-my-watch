@@ -1,24 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6gul5rhvj7ko"]
+[gd_scene load_steps=6 format=3 uid="uid://b6gul5rhvj7ko"]
 
-[ext_resource type="Script" path="res://assets/furniture/consumer-subsystem.gd" id="1_d47ud"]
+[ext_resource type="Script" path="res://assets/furniture/engine/engine.gd" id="1_0uy0m"]
 [ext_resource type="Texture2D" uid="uid://cy50mgfvaxewv" path="res://assets/tile-white.png" id="2_1pfk2"]
 [ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_l2wdm"]
+[ext_resource type="PackedScene" uid="uid://cqjvlifp8vo83" path="res://assets/effects/speech_bubble.tscn" id="4_nymua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amh7t"]
 size = Vector2(128, 96)
 
 [node name="engine" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_d47ud")
-POWER_USAGE = 40
-SUBSYSTEM_ID = "engine"
+script = ExtResource("1_0uy0m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 y_sort_enabled = true
 scale = Vector2(4, 3)
 texture = ExtResource("2_1pfk2")
 
 [node name="name_label" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 y_sort_enabled = true
@@ -30,6 +31,7 @@ text = "Engines"
 
 [node name="label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 y_sort_enabled = true
 offset_left = -60.0
@@ -41,10 +43,17 @@ text = "Power: x/y"
 [node name="button" parent="." instance=ExtResource("3_l2wdm")]
 unique_name_in_owner = true
 y_sort_enabled = true
-position = Vector2(48, 52)
+position = Vector2(0, 30)
 button_id = "weapons"
+display_sprite = true
+collision_area = Vector2(128, 10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_amh7t")
+
+[node name="speech_bubble" parent="." instance=ExtResource("4_nymua")]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+message = "engine bubble"

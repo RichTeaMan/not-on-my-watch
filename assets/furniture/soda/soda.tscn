@@ -1,22 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctuxcywfhrxgg"]
+[gd_scene load_steps=6 format=3 uid="uid://ctuxcywfhrxgg"]
 
 [ext_resource type="Script" path="res://assets/furniture/soda/soda.gd" id="1_wypva"]
+[ext_resource type="PackedScene" uid="uid://cqjvlifp8vo83" path="res://assets/effects/speech_bubble.tscn" id="2_14kl4"]
 [ext_resource type="Texture2D" uid="uid://cy50mgfvaxewv" path="res://assets/tile-white.png" id="2_kybed"]
 [ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_76lmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amh7t"]
-size = Vector2(64, 96)
+size = Vector2(60, 44)
 
 [node name="soda" type="Node2D"]
 script = ExtResource("1_wypva")
 POWER_USAGE = 10
 SUBSYSTEM_ID = "soda"
 
+[node name="speech_bubble" parent="." instance=ExtResource("2_14kl4")]
+unique_name_in_owner = true
+position = Vector2(0, -20)
+message = "soda bubble"
+size = Vector2(20, 20)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(2, 3)
 texture = ExtResource("2_kybed")
 
 [node name="name_label" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -30.0
 offset_top = -50.0
@@ -28,6 +37,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -60.0
 offset_top = 20.0
@@ -38,6 +48,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="charge_label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -60.0
 offset_top = 1.405
@@ -48,10 +59,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="button" parent="." instance=ExtResource("3_76lmo")]
 unique_name_in_owner = true
-position = Vector2(-1, 53)
-button_id = "weapons"
+button_id = "soda"
+collision_area = Vector2(60, 10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_amh7t")

@@ -1,20 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://2652g0yxsf11"]
+[gd_scene load_steps=6 format=3 uid="uid://2652g0yxsf11"]
 
-[ext_resource type="Script" path="res://assets/furniture/consumer-subsystem.gd" id="1_8nnse"]
+[ext_resource type="Script" path="res://assets/furniture/shield-generator/shield-generator.gd" id="1_o5o4w"]
 [ext_resource type="Texture2D" uid="uid://cy50mgfvaxewv" path="res://assets/tile-white.png" id="1_wskuv"]
 [ext_resource type="PackedScene" uid="uid://cjpqjv4bkrjf8" path="res://assets/furniture/button/button.tscn" id="3_jectt"]
+[ext_resource type="PackedScene" uid="uid://cqjvlifp8vo83" path="res://assets/effects/speech_bubble.tscn" id="4_4cfr1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmh7t"]
 size = Vector2(96, 64)
 
 [node name="Shield-generator" type="Node2D"]
-script = ExtResource("1_8nnse")
+script = ExtResource("1_o5o4w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(3, 2)
 texture = ExtResource("1_wskuv")
 
 [node name="name_label" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_left = -43.0
@@ -25,6 +28,7 @@ text = "Shield Gen"
 
 [node name="label" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -46.0
 offset_right = 46.0
@@ -33,10 +37,16 @@ text = "Power: x/y"
 
 [node name="button" parent="." instance=ExtResource("3_jectt")]
 unique_name_in_owner = true
-position = Vector2(0, 36)
+position = Vector2(0, 13)
 button_id = "shield"
+collision_area = Vector2(96, 10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_qmh7t")
+
+[node name="speech_bubble" parent="." instance=ExtResource("4_4cfr1")]
+unique_name_in_owner = true
+position = Vector2(0, -32)
+message = "shield bubble"
