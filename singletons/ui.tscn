@@ -58,3 +58,12 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yph74")
 theme_override_font_sizes/font_size = 40
+
+[node name="restart_button" type="Button" parent="Ui/center/game_over"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+
+[connection signal="pressed" from="Ui/center/game_over/restart_button" to="." method="_on_restart_button_pressed"]

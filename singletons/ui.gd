@@ -13,6 +13,7 @@ var message_queue: Array[String] = []
 func _ready() -> void:
     %game_over.visible = false
     Global.on_game_over.connect(_on_game_over)
+    Global.on_restart_game.connect(_on_restart_game)
 
 func _process(_delta: float):
     if message_queue.size() > 0 && comm_messages_ready():
@@ -42,4 +43,13 @@ func _on_game_over(reason: String) -> void:
     Global.fade_play_screen(0.6)
     %game_over.visible = true
     %game_over_reason.text = reason
-    
+
+func _on_restart_game() -> void:
+    Global.fade_play_screen(0.0)
+    %game_over.visible = false
+    message_queue.clear()
+    for m: CommsMessage in commMessages.get_children():
+        m.queue_free()
+
+func _on_restart_button_pressed() -> void:
+    Global.restart_game()

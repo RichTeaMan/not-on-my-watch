@@ -11,6 +11,7 @@ signal on_attack_enemy()
 signal on_game_over(reason)
 signal on_soda_ready()
 signal on_fade_play_screen(alpha)
+signal on_restart_game()
 
 var character_body
 
@@ -51,6 +52,9 @@ func soda_ready() -> void:
 ## Fades the play screen. 0.0 is no fade, 1.0 is fully black.
 func fade_play_screen(alpha: float) -> void:
     on_fade_play_screen.emit(alpha)
+
+func restart_game() -> void:
+    on_restart_game.emit()
 
 func _on_resize():
     var window_size = DisplayServer.window_get_size()

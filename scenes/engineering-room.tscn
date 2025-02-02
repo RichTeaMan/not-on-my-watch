@@ -38,12 +38,12 @@ collision_enabled = false
 [node name="large_tiles" type="TileMapLayer" parent="tiles"]
 z_index = 1
 scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAADAAEAAAAeAAcAAAADAAIAAAAeAAgAAAAEAP//AAAgAAcAAAAEAAAAAAAgAAgAAAAEAAEAAAAfAAcAAAAEAAIAAAAfAAgAAAADAAMAAAAeAAkAAAADAAQAAAAeAAoAAAAEAAMAAAAfAAkAAAAEAAQAAAAfAAoAAAAFAAEAAAAgAAcAAAAFAAIAAAAgAAgAAAAFAAMAAAAgAAkAAAAFAAQAAAAgAAoAAAA=")
+tile_map_data = PackedByteArray("AAADAAEAAAAeAAcAAAADAAIAAAAeAAgAAAAEAP//AAAgAAcAAAAEAAEAAAAfAAcAAAAEAAIAAAAfAAgAAAADAAMAAAAeAAkAAAADAAQAAAAeAAoAAAAEAAMAAAAfAAkAAAAEAAQAAAAfAAoAAAAFAAEAAAAgAAcAAAAFAAIAAAAgAAgAAAAFAAMAAAAgAAkAAAAFAAQAAAAgAAoAAAA=")
 tile_set = ExtResource("5_ak345")
 
 [node name="oran" parent="." instance=ExtResource("2_xyft2")]
 y_sort_enabled = true
-position = Vector2(337, 308)
+position = Vector2(500, 220)
 SPEED = 400.0
 
 [node name="furniture" type="Node2D" parent="."]
