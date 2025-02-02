@@ -47,5 +47,6 @@ func _on_increment_power_consumption(power):
     current_power_drain += power
     power_label.text = "Power draw: %s" % [ current_power_drain ]
     if current_power_drain > MAX_POWER:
-        UI.add_comm_message("HELP! Reactor is overloaded!")
         power_label.text = "Draw power: %s" % [ current_power_drain ]
+        if randi() % 4 == 0:
+            UI.add_comm_message("Careful! Reactor is overloaded!")
