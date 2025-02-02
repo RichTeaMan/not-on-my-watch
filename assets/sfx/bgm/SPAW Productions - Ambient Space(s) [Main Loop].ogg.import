@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://q48kod3pa3ib"
+path="res://.godot/imported/SPAW Productions - Ambient Space(s) [Main Loop].ogg-27c3234ff6c7193abaa63a6cd10e9d69.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/bgm/SPAW Productions - Ambient Space(s) [Main Loop].ogg"
+dest_files=["res://.godot/imported/SPAW Productions - Ambient Space(s) [Main Loop].ogg-27c3234ff6c7193abaa63a6cd10e9d69.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c2vq0a0joo1m6"]
+[gd_scene load_steps=15 format=4 uid="uid://c2vq0a0joo1m6"]
 
 [ext_resource type="TileSet" uid="uid://cuhjq1vosjrim" path="res://assets/grids/scifi-tilemap.tres" id="1_07b2t"]
 [ext_resource type="Script" path="res://scenes/engineering_room.gd" id="1_w7vme"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://b6gul5rhvj7ko" path="res://assets/furniture/engine/engine.tscn" id="7_ehy75"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="8_uhxij"]
 [ext_resource type="PackedScene" uid="uid://ctuxcywfhrxgg" path="res://assets/furniture/soda/soda.tscn" id="9_083vw"]
+[ext_resource type="AudioStream" uid="uid://dwalw78ae35b5" path="res://assets/sfx/explosions/large.ogg" id="11_qmkha"]
+[ext_resource type="AudioStream" uid="uid://00cjjk1wq805" path="res://assets/sfx/explosions/far-off.ogg" id="12_6oi7b"]
+[ext_resource type="AudioStream" uid="uid://ceoiyyjiij8vn" path="res://assets/sfx/explosions/dud.ogg" id="13_r4nj7"]
+[ext_resource type="AudioStream" uid="uid://bd6r2wwyxfvfq" path="res://assets/sfx/explosions/laser.ogg" id="14_nmt83"]
 
 [node name="engineering-room" type="Node2D"]
 y_sort_enabled = true
@@ -91,3 +95,21 @@ unique_name_in_owner = true
 
 [node name="canvas_modulate" type="CanvasModulate" parent="."]
 unique_name_in_owner = true
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="sound_missile_hit" type="AudioStreamPlayer" parent="sfx"]
+unique_name_in_owner = true
+stream = ExtResource("11_qmkha")
+
+[node name="sound_shield_hit" type="AudioStreamPlayer" parent="sfx"]
+unique_name_in_owner = true
+stream = ExtResource("12_6oi7b")
+
+[node name="sound_missile_miss" type="AudioStreamPlayer" parent="sfx"]
+unique_name_in_owner = true
+stream = ExtResource("13_r4nj7")
+
+[node name="sound_laser" type="AudioStreamPlayer" parent="sfx"]
+unique_name_in_owner = true
+stream = ExtResource("14_nmt83")

@@ -23,6 +23,11 @@ enum Aliments {
 @onready var fire_2_scene = load("res://assets/effects/fire_2.tscn")
 @onready var fire_3_scene = load("res://assets/effects/fire_3.tscn")
 
+@onready var sound_missile_hit: AudioStreamPlayer = %sound_missile_hit
+@onready var sound_missile_miss: AudioStreamPlayer = %sound_missile_miss
+@onready var sound_shield_hit: AudioStreamPlayer = %sound_shield_hit
+@onready var sound_laser: AudioStreamPlayer = %sound_laser
+
 var aliment_timer = 10.0
 
 var second_timer = 1.0
@@ -109,7 +114,7 @@ func ship_damage():
     if ship_health == 1:
         UI.add_comm_message("One more hit and we're done for!")
     if ship_health <= 0:
-        Global.game_over("The ship was destroyed by enemy attacks")
+        Global.game_over("The ship was destroyed be enemy attacks")
 
 func spawn_fire(fires_to_spawn: int):
     var tile_map: TileMapLayer = %tile_map_floors
@@ -134,15 +139,19 @@ func _on_enemy_ship_state_changed(enemy_ship_state: EnemyShip.EnemyShipState) ->
     elif enemy_ship_state == EnemyShip.EnemyShipState.ATTACKING:
         if shield.get_enabled_state():
             UI.add_comm_message("They hit our shield, ha!");
+            sound_shield_hit.play()
         else:
             UI.add_comm_message("We've been hit by lasers!")
+            sound_laser.play()
             ship_damage()
             
     elif enemy_ship_state == EnemyShip.EnemyShipState.LAUNCHING_MISSILES:
         if engine.get_enabled_state():
             UI.add_comm_message("We dodged the missiles!");
+            sound_missile_miss.play()
         else:
             UI.add_comm_message("We've been hit by missiles!")
+            sound_missile_hit.play()
             ship_damage()
 
 func _on_weapon_ready():

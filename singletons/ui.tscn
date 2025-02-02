@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctnamq83mn07m"]
+[gd_scene load_steps=4 format=3 uid="uid://ctnamq83mn07m"]
 
 [ext_resource type="Script" path="res://singletons/ui.gd" id="1_fktxw"]
 [ext_resource type="FontFile" uid="uid://lhnm3prxqp6c" path="res://assets/fonts/VT323-Regular.ttf" id="2_yph74"]
+[ext_resource type="AudioStream" uid="uid://q48kod3pa3ib" path="res://assets/sfx/bgm/SPAW Productions - Ambient Space(s) [Main Loop].ogg" id="3_8ttmc"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_fktxw")
@@ -95,6 +96,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yph74")
 theme_override_font_sizes/font_size = 20
 text = "Play again"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8ttmc")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="Ui/center/game_over/restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Ui/center/player_win/restart_button" to="." method="_on_restart_button_pressed"]
