@@ -37,3 +37,5 @@ func _process(delta: float) -> void:
             charge_level = 0
         speech_bubble.message = "Power usage: %s\nSoda progress: %s/%s" % [ POWER_USAGE, charge_level, MAX_CHARGE_LEVEL ]
         charge_label.text = "Charge: %s/%s" % [charge_level, MAX_CHARGE_LEVEL]
+    else:
+        speech_bubble.message = "Soda machine powered down"

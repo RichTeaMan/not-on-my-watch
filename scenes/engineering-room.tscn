@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpa0f23iv28qh" path="res://assets/characters/oran/oran.tscn" id="2_xyft2"]
 [ext_resource type="PackedScene" uid="uid://ctxsy6incefdm" path="res://assets/furniture/reactor/reactor.tscn" id="3_f62ad"]
 [ext_resource type="PackedScene" uid="uid://bskwjvmpgvw38" path="res://assets/furniture/weapons/weapons.tscn" id="5_8fw0f"]
-[ext_resource type="TileSet" uid="uid://bkeqx3l485en1" path="res://assets/grids/land_of_pixels_large_tiles_stuff.tres" id="5_ak345"]
+[ext_resource type="TileSet" uid="uid://bkeqx3l485en1" path="res://assets/furniture/land_of_pixels_large_tiles_stuff.tres" id="5_ak345"]
 [ext_resource type="PackedScene" uid="uid://2652g0yxsf11" path="res://assets/furniture/shield-generator/shield-generator.tscn" id="5_kjb57"]
 [ext_resource type="PackedScene" uid="uid://b6gul5rhvj7ko" path="res://assets/furniture/engine/engine.tscn" id="7_ehy75"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="8_uhxij"]

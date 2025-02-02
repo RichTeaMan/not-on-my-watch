@@ -127,7 +127,7 @@ func _on_enemy_ship_state_changed(enemy_ship_state: EnemyShip.EnemyShipState) ->
     if enemy_ship_state == EnemyShip.EnemyShipState.PREPARING_ATTACK:
         UI.add_comm_message("They're preparing to attack, raise shields!")
     if enemy_ship_state == EnemyShip.EnemyShipState.PREPARING_MISSILES:
-        UI.add_comm_message("They've about to launch missiles, deploy afterburners!")
+        UI.add_comm_message("They've about to launch missiles, power the engines!")
     elif enemy_ship_state == EnemyShip.EnemyShipState.VULNERABLE:
         UI.add_comm_message("They're wide open, ready the weapons!")
     elif enemy_ship_state == EnemyShip.EnemyShipState.ATTACKING:

@@ -45,8 +45,7 @@ unique_name_in_owner = true
 y_sort_enabled = true
 position = Vector2(0, 30)
 button_id = "weapons"
-display_sprite = true
-collision_area = Vector2(128, 10)
+collision_area = Vector2(96, 10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

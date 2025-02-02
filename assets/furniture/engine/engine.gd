@@ -18,4 +18,4 @@ func _process(delta: float) -> void:
     if Engine.is_editor_hint():
         return
     super._process(delta)
-    speech_bubble.message = "Engine power usage: %s" % POWER_USAGE if is_enabled else ""
+    speech_bubble.message = "Engine power usage: %s" % POWER_USAGE if is_enabled else "Engine powered down"
