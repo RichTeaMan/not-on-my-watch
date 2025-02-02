@@ -41,6 +41,7 @@ func _ready() -> void:
     Global.on_game_over.connect(_on_game_over)
     Global.on_soda_ready.connect(_on_soda_ready)
     Global.on_fade_play_screen.connect(_on_fade_play_screen)
+    Global.on_low_enemy_health.connect(_on_low_enemy_health)
     for i in range(0, enemy_ship_count):
         enemy_ships.append(EnemyShip.new())
     
@@ -108,7 +109,7 @@ func ship_damage():
     if ship_health == 1:
         UI.add_comm_message("One more hit and we're done for!")
     if ship_health <= 0:
-        Global.game_over("The ship was destroyed be enemy attacks")
+        Global.game_over("The ship was destroyed by enemy attacks")
 
 func spawn_fire(fires_to_spawn: int):
     var tile_map: TileMapLayer = %tile_map_floors
@@ -159,6 +160,9 @@ func _on_weapon_ready():
     if !missed:
         Global.attack_enemy()
         UI.add_comm_message("We've hit them! That'll slow them down.")
+
+func _on_low_enemy_health():
+    UI.add_comm_message("They're badly damaged! One more hit should finish them")
 
 func _on_game_over(_reason: String) -> void:
     process_mode = ProcessMode.PROCESS_MODE_DISABLED

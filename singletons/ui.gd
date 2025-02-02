@@ -12,6 +12,7 @@ var message_queue: Array[String] = []
 
 func _ready() -> void:
     %game_over.visible = false
+    %player_win.visible = false
     Global.on_game_over.connect(_on_game_over)
     Global.on_restart_game.connect(_on_restart_game)
 
@@ -41,12 +42,20 @@ func _add_comm_message(message: String) -> void:
 
 func _on_game_over(reason: String) -> void:
     Global.fade_play_screen(0.6)
-    %game_over.visible = true
-    %game_over_reason.text = reason
+    var total_seconds = Global.game_duration_seconds()
+    var seconds = total_seconds % 60
+    var minutes = floori((total_seconds - seconds) / 60)
+    if reason == "player_win":
+        %player_win.visible = true
+        %win_info.text = "The enemy ship was destroyed in %s minutes and %s seconds" % [reason, minutes, seconds]
+    else:
+        %game_over.visible = true
+        %game_over_reason.text = "%s\nYou lasted %s minutes and %s seconds" % [reason, minutes, seconds]
 
 func _on_restart_game() -> void:
     Global.fade_play_screen(0.0)
     %game_over.visible = false
+    %player_win.visible = false
     message_queue.clear()
     for m: CommsMessage in commMessages.get_children():
         m.queue_free()

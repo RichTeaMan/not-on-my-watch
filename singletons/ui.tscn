@@ -43,6 +43,7 @@ grow_vertical = 2
 
 [node name="game_over" type="VBoxContainer" parent="Ui/center"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Ui/center/game_over"]
@@ -58,12 +59,42 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yph74")
 theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
 
 [node name="restart_button" type="Button" parent="Ui/center/game_over"]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yph74")
 theme_override_font_sizes/font_size = 20
-text = "Restart"
+text = "Try again"
+
+[node name="player_win" type="VBoxContainer" parent="Ui/center"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Ui/center/player_win"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 80
+text = "You win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_info" type="Label" parent="Ui/center/player_win"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 40
+text = "The enemy ship was destroyed."
+horizontal_alignment = 1
+
+[node name="restart_button" type="Button" parent="Ui/center/player_win"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yph74")
+theme_override_font_sizes/font_size = 20
+text = "Play again"
 
 [connection signal="pressed" from="Ui/center/game_over/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Ui/center/player_win/restart_button" to="." method="_on_restart_button_pressed"]

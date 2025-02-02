@@ -12,12 +12,17 @@ enum EnemyShipState {
 var timeToStateChange: float = 0.0
 var state: EnemyShipState = EnemyShipState.IDLE
 
+var max_health = 3
+var current_health = max_health
+
 func _init() -> void:
     state = EnemyShipState.IDLE
     timeToStateChange = 5.0
     Global.on_attack_enemy.connect(_on_attack_enemy)
 
 func process(delta: float):
+    if current_health == 0:
+        return
     timeToStateChange -= delta
     if timeToStateChange < 0.0:
         match state:
@@ -42,4 +47,9 @@ func randInitialState() -> EnemyShipState:
     return possible_states.pick_random()
 
 func _on_attack_enemy():
-    pass
+    current_health -= 1
+    if current_health == 1:
+        Global.low_enemy_health()
+    if current_health == 0:
+        Global.game_over("player_win")
+        state = EnemyShipState.IDLE
