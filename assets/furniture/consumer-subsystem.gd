@@ -15,8 +15,6 @@ func _ready() -> void:
         return
     Global.on_button_pressed.connect(_on_button_pressed)
     button.button_id = SUBSYSTEM_ID
-    if speech_bubble != null:
-        speech_bubble.z_index = 2
 
 func _process(_delta: float) -> void:
     label.text = "On PU: %s" % POWER_USAGE if is_enabled else "Off"
@@ -26,7 +24,10 @@ func _on_button_pressed(button_id: String):
         return
     is_enabled = !is_enabled
     var power_delta = POWER_USAGE if is_enabled else -POWER_USAGE
-    Global.increment_power_consumption(power_delta)
+    #Global.increment_power_consumption(power_delta)
+
+func get_current_draw() -> int:
+    return POWER_USAGE if is_enabled else 0
 
 func get_enabled_state() -> bool:
     return is_enabled

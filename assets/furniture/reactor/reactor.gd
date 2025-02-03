@@ -43,10 +43,14 @@ func _on_button_pressed(button_id: String):
         return
     powerLevel = MAX_POWER
 
-func _on_increment_power_consumption(power):
-    current_power_drain += power
+func power_drain(p_current_power_drain: int):
+    var old_current_power_drain = current_power_drain
+    current_power_drain = p_current_power_drain
     power_label.text = "Power draw: %s" % [ current_power_drain ]
     if current_power_drain > MAX_POWER:
         power_label.text = "Draw power: %s" % [ current_power_drain ]
-        if randi() % 4 == 0:
+        if old_current_power_drain != p_current_power_drain && randi() % 4 == 0:
             UI.add_comm_message("Careful! Reactor is overloaded!")
+
+func _on_increment_power_consumption(power):
+    power_drain(current_power_drain + power)

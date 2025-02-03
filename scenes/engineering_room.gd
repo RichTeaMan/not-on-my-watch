@@ -18,6 +18,9 @@ enum Aliments {
 @onready var shield: ConsumerSubsystem = %shield
 @onready var engine: ConsumerSubsystem = %engine
 @onready var weapons: ConsumerSubsystem = %weapons
+@onready var soda: ConsumerSubsystem = %soda
+
+@onready var subsystems: Array[ConsumerSubsystem] = [shield, engine, weapons, soda]
 
 @onready var fire_1_scene = load("res://assets/effects/fire_1.tscn")
 @onready var fire_2_scene = load("res://assets/effects/fire_2.tscn")
@@ -70,6 +73,11 @@ func _process(delta: float) -> void:
     
     for enemy_ship in enemy_ships:
         enemy_ship.process(delta)
+    
+    var power_usage := 0
+    for subsystem in subsystems:
+        power_usage += subsystem.get_current_draw()
+    reactor.power_drain(power_usage)
     
     if reactor.is_in_danger():
         start_red_siren()
