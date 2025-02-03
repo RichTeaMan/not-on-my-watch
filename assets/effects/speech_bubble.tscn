@@ -45,11 +45,13 @@ text = "some text
 message"
 
 [node name="ColorRect" type="ColorRect" parent="ui_root/outer_container"]
+modulate = Color(0.878431, 0.847059, 0.807843, 1)
 show_behind_parent = true
 layout_mode = 2
 
 [node name="tail" type="TextureRect" parent="ui_root"]
 unique_name_in_owner = true
+modulate = Color(0.878431, 0.847059, 0.807843, 1)
 layout_mode = 0
 offset_left = 30.9
 offset_top = 73.0
