@@ -71,7 +71,6 @@ text = "Try again"
 
 [node name="player_win" type="VBoxContainer" parent="Ui/center"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Ui/center/player_win"]
@@ -142,6 +141,7 @@ value = 1.0
 
 [node name="introduction" type="MarginContainer" parent="Ui"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

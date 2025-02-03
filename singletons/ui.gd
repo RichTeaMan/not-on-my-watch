@@ -54,7 +54,7 @@ func _on_game_over(reason: String) -> void:
     var minutes = floori((total_seconds - seconds) / 60)
     if reason == "player_win":
         %player_win.visible = true
-        %win_info.text = "The enemy ship was destroyed in %s minutes and %s seconds" % [reason, minutes, seconds]
+        %win_info.text = "The enemy ship was destroyed in %s minutes and %s seconds" % [minutes, seconds]
     else:
         %game_over.visible = true
         %game_over_reason.text = "%s\nYou lasted %s minutes and %s seconds" % [reason, minutes, seconds]
