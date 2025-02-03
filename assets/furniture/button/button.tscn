@@ -7,7 +7,7 @@
 size = Vector2(32, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rmh1"]
-size = Vector2(60, 10)
+size = Vector2(20, 10)
 
 [node name="Button" type="Node2D"]
 script = ExtResource("1_fcgup")

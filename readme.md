@@ -2,6 +2,8 @@
 
 A game about managing power on an ailing spaceship. Built the [Big Mode Game Jam 2025](https://itch.io/jam/bigmode-game-jam-2025).
 
+Playable in the browser on [itch.io](https://richteaman.itch.io/not-on-my-watch).
+
 ## Attributions
 
 * Game engine - [Godot](https://godotengine.org/)
